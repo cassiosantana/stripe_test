@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Stripe::Plan.create(product: { name: 'Pro', id: 'pro'},
+                    interval: 'month',
+                    currency: 'usd',
+                    amount: 1500)
