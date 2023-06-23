@@ -10,4 +10,8 @@ class User < ApplicationRecord
     update(stripe_id: stripe_customer.id)
     stripe_customer
   end
+
+  def subscribed?
+    stripe_subscription_id?
+  end
 end
