@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :products
   devise_for :users
   resources :subscriptions, only: [:new, :create]
   root to: 'home#index'
