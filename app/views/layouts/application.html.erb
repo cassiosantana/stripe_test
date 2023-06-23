@@ -11,8 +11,24 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class='container'>
+      <div class='pull-left'>
+        <%= link_to "Home", root_path %>
+      </div>
+      <div class='pull-right'>
+        <% if user_signed_in? %>
+          <%= link_to "Account", edit_user_registration_path %> |
+          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path %> |
+          <%= link_to "Login", new_user_session_path %>
+        <% end %>
+      </div>
+
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class: (key == 'notice' ? 'alert alert-success' : 'alert alert-danger') %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
