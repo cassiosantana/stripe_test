@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :purchases, only: :create
+  mount StripeEvent::Engine, at: '/stripe/webhook'
   resources :products
   devise_for :users
   resources :subscriptions, only: [:new, :create]
