@@ -1,0 +1,5 @@
+stripe_publishable_key = document.querySelector('meta[name="stripe-public-key"]').getAttribute('content')
+stripe = Stripe(stripe_publishable_key)
+stripe.redirectToCheckout({
+    sessionId: "<%= @session_id %>"
+})
