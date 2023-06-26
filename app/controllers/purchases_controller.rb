@@ -15,6 +15,7 @@ class PurchasesController < ApplicationController
       json[:line_items] = line_items
       json[:success_url] = 'http://localhost:3000/'
       json[:cancel_url] = 'http://localhost:3000/'
+      json[:mode] = 'payment'
     end
   end
 
@@ -22,11 +23,15 @@ class PurchasesController < ApplicationController
     [].tap do |array|
       products.each do |product|
         array << {
+          price_data: {
+            currency: 'USD',
+            unit_amount: (product.price * 100).to_i,
+            product_data: {
+              name: product.name,
+              description: product.name
+            },
+          },
           quantity: 1,
-          name: product.name,
-          amount: (product.price * 100).to_i,
-          currency: 'USD',
-          description: product.name
         }
       end
     end
