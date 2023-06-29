@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :subscriptions, only: [:new, :create]
   root to: 'home#index'
+  get '/example', to: 'home#example'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
