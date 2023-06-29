@@ -1,5 +1,5 @@
-document.addEventListener('turbolinks:load', function() {
-    var card, elements, form, stripe, stripeTokenHandler, stripe_public_key, style;
+document.addEventListener('DOMContentLoaded', function() {
+    let card, elements, form, stripe, stripeTokenHandler, stripe_public_key, style;
     stripe_public_key = document.querySelector('meta[name="stripe-public-key"]').getAttribute('content');
     stripe = Stripe(stripe_public_key);
     elements = stripe.elements();
@@ -9,7 +9,7 @@ document.addEventListener('turbolinks:load', function() {
     });
     card.mount('#card-element');
     card.addEventListener('change', function(event) {
-        var displayError;
+        let displayError;
         displayError = document.getElementById('card-errors');
         if (event.error) {
             return displayError.textContent = event.error.message;
@@ -19,7 +19,7 @@ document.addEventListener('turbolinks:load', function() {
     });
 
     stripeTokenHandler = function(token) {
-        var form, hiddenInput;
+        let form, hiddenInput;
         form = document.getElementById('payment-form');
         hiddenInput = document.createElement('input');
         hiddenInput.setAttribute('type', 'hidden');
@@ -33,7 +33,7 @@ document.addEventListener('turbolinks:load', function() {
     return form.addEventListener('submit', function(event) {
         event.preventDefault();
         return stripe.createToken(card).then(function(result) {
-            var errorElement;
+            let errorElement;
             if (result.error) {
                 errorElement = document.getElementById('card-errors');
                 return errorElement.textContent = result.error.message;
