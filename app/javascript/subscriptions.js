@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:load', function() {
+document.addEventListener('DOMContentLoaded', function() {
     let card, elements, form, stripe, stripeTokenHandler, stripe_public_key, style;
     stripe_public_key = document.querySelector('meta[name="stripe-public-key"]').getAttribute('content');
     stripe = Stripe(stripe_public_key);
