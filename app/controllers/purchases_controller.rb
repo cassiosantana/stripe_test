@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!
   def create
     session = Stripe::Checkout::Session.create(stripe_parameters)
-    @session_id = session.id
+    redirect_to session.url, allow_other_host: true
   end
 
   def stripe_parameters
