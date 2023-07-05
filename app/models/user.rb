@@ -16,6 +16,6 @@ class User < ApplicationRecord
   end
 
   def subscribed?
-    stripe_subscription_id?
+    stripe_subscription_id? || expires_at
   end
 end
