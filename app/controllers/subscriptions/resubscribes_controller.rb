@@ -3,7 +3,7 @@ module Subscriptions
   class ResubscribesController < ApplicationController
 
     def new
-      subscription = current_user.stripe_customer.subscriptions.first
+      subscription = Stripe::Subscription.list(customer: current_user.stripe_id).first
       if subscription.save
         current_user.update(stripe_subscription_id: subscription.id, expires_at: nil)
         flash.notice = "Thanks for resubscribing!"
