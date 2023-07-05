@@ -2,7 +2,11 @@
 <p>Find me in app/views/home/index.html.erb</p>
 
 <% if current_user&.subscribed? %>
-  SUBSCRIBED - <%= current_user.stripe_subscription_id %>
+  SUBSCRIBED - <%= current_user.stripe_subscription_id %><br>
+  <%= button_to "Cancel Subscription", unsubscribe_path,
+              data: { confirm: "Are you sure?" }, class: 'btn btn-primary',
+              method: :delete unless current_user.expires_at %>
+  <%= link_to "Resubscribe", new_resubscribe_path, class: 'btn btn-primary' if current_user.expires_at %>
 <% else %>
   <p><%= link_to "Subscribe Now!", new_subscription_path, class: 'btn btn-primary' %></p>
 <% end %>
