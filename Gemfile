@@ -74,3 +74,4 @@ end
 gem "devise", "~> 4.9", ">= 4.9.2"
 gem "stripe", "~> 8.5"
 gem "stripe_event", "~> 2.7"
+gem 'stripe-ruby-mock', :require => 'stripe_mock'
