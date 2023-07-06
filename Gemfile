@@ -53,7 +53,6 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
   gem 'rspec-rails', '~> 6.0'
-  gem 'stripe-ruby-mock'
 end
 
 group :development do
