@@ -51,6 +51,9 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  gem 'rspec-rails', '~> 6.0'
+  gem 'stripe-ruby-mock'
 end
 
 group :development do
@@ -74,4 +77,3 @@ end
 gem "devise", "~> 4.9", ">= 4.9.2"
 gem "stripe", "~> 8.5"
 gem "stripe_event", "~> 2.7"
-gem 'stripe-ruby-mock', :require => 'stripe_mock'
