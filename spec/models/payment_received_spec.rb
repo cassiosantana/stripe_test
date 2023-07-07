@@ -23,7 +23,7 @@ RSpec.describe PaymentReceived, type: :model do
     payment_received = PaymentReceivedMock.call(@payment)
     user.reload
     expect(user.stripe_id).to eq("cus_test")
-    expect(payment_received).to be_truthy
+    expect(payment_received).to eq(true)
   end
 end
 
