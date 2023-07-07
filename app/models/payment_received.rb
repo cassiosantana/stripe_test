@@ -9,9 +9,10 @@ class PaymentReceived
   end
 
   def call
-    return unless user
+    return false unless user
     user.update(stripe_id: object.customer) unless user.stripe_id
     complete_purchase
+    true
   end
 
   private
