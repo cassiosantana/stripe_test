@@ -20,17 +20,10 @@ RSpec.describe PaymentReceived, type: :model do
   end
 
   it "should credit user vbucks" do
-    payment_received = PaymentReceivedMock.call(@payment)
+    allow_any_instance_of(PaymentReceived).to receive(:line_items).and_return([])
+    payment_received =  PaymentReceived.new(@payment).call
     user.reload
     expect(user.stripe_id).to eq("cus_test")
     expect(payment_received).to eq(true)
-  end
-end
-
-class PaymentReceivedMock < PaymentReceived
-  private
-
-  def line_items
-    []
   end
 end
