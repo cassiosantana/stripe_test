@@ -26,3 +26,11 @@ RSpec.describe PaymentReceived, type: :model do
     expect(payment_received).to be_truthy
   end
 end
+
+class PaymentReceivedMock < PaymentReceived
+  private
+
+  def line_items
+    []
+  end
+end
