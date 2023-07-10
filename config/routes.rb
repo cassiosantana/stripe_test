@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
-  get 'donates/create'
-  get 'donates/thankyou'
+  resources :donates, only: :create do
+    collection do
+      get :thankyou
+    end
+  end
+
   resource :purchases, only: :create
+
   mount StripeEvent::Engine, at: '/stripe/webhook'
+
   resources :products
+
   devise_for :users
+
   resources :subscriptions, only: [:new, :create] do
     scope module: 'subscriptions' do
       collection do
@@ -13,6 +21,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   root to: 'home#index'
   get '/example', to: 'home#example'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
