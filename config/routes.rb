@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'donates/create'
+  get 'donates/thankyou'
   resource :purchases, only: :create
   mount StripeEvent::Engine, at: '/stripe/webhook'
   resources :products
