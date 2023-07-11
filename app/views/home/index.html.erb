@@ -11,6 +11,7 @@
   <p><%= link_to "Subscribe Now!", new_subscription_path, class: 'btn btn-primary' %></p>
 <% end %>
 
-<br>
+<hr>
 
-<%= link_to "Donate", "https://donate.stripe.com/test_eVa8xn2URcIXfeM288", target: :_blank %>
+<%= link_to "Donate", "https://donate.stripe.com/test_eVa8xn2URcIXfeM288", target: :_blank %>|
+<%= button_to "Donate $5", donates_path(amount: 500), "data-turbo": :false %>
