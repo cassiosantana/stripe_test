@@ -1,5 +1,5 @@
 class DonatesController < ApplicationController
-  def create
+  def show
     session = Stripe::Checkout::Session.create(
       billing_address_collection: :auto,
       mode: :payment,

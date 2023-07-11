@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :donates, only: :create do
+  resources :donates, only: [] do
     collection do
+      get :show
       get :thankyou
     end
   end
