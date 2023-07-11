@@ -16,3 +16,8 @@
 <%= link_to "Donate", "https://donate.stripe.com/test_eVa8xn2URcIXfeM288", target: :_blank %> |
 <%= link_to "Donate $5", donates_path(amount: 500) %> |
 <%= link_to "Donate $50 ", donates_path(amount: 5000) %>
+
+<%= form_with url: donates_path, "data-turbo": false, method: :get do |f| %>
+  <%= f.number_field :amount %>
+  <%= f.submit "Donate" %>
+<% end %>
