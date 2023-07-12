@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'three_d_secure_subscriptions/new'
+  get 'three_d_secure_subscriptions/create'
   resources :donates, only: [] do
     collection do
       get :show
