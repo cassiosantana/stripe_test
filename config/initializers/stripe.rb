@@ -8,3 +8,9 @@ StripeEvent.configure do |config|
     PaymentReceived.call(event)
   end
 end
+
+StripeEvent.configure do |config|
+  config.subscribe 'checkout.session.completed' do |event|
+    SubscribeService.call(event)
+  end
+end
