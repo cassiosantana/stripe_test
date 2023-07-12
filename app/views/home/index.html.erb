@@ -25,5 +25,5 @@
 <hr>
 
 <% if user_signed_in? %>
-  <p><%= link_to 'Subscribe to Pro for $10/month', '#', class: 'btn btn-primary' %></p>
+  <p><%= link_to 'Subscribe to Pro for $10/month', new_three_d_secure_subscription_path, class: 'btn btn-primary' %></p>
 <% end %>
