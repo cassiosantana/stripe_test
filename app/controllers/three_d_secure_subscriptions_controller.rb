@@ -8,7 +8,7 @@ class ThreeDSecureSubscriptionsController < ApplicationController
       customer_email: current_user.email,
       subscription_data: {
         items: [{
-          plan: 'pro'
+          plan: 'premium'
         }]
       },
       success_url: "http://localhost:3000/",
