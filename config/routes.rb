@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   resource :purchases, only: :create
 
-  mount StripeEvent::Engine, at: '/stripe/webhook'
+  # mount StripeEvent::Engine, at: '/stripe/webhook'
+  post "/stripe/webhook", to: "stripe_webhooks#event"
 
   resources :products
 
