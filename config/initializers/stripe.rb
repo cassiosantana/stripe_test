@@ -4,9 +4,10 @@ StripeEvent.signing_secret = ENV['STRIPE_WEBHOOK_KEY']
 
 StripeEvent.configure do |config|
   config.subscribe 'checkout.session.completed' do |event|
-    if event.data.object.mode == "payment"
+    case event.data.object.mode
+    when 'payment'
       PaymentReceived.call(event)
-    elsif event.data.object.mode == "subscription"
+    when 'subscription'
       SubscribeService.call(event)
     end
   end
