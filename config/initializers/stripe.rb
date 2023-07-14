@@ -1,7 +1,6 @@
-Stripe.api_key = Rails.application.credentials.stripe_private_key
+Stripe.api_key = ENV['STRIPE_API_KEY']
 
-# Stripe.api_key = ENV['STRIPE_API_KEY']
-StripeEvent.signing_secret = Rails.application.credentials.signing_secret
+StripeEvent.signing_secret = ENV['STRIPE_WEBHOOK_KEY']
 
 StripeEvent.configure do |config|
   config.subscribe 'checkout.session.completed' do |event|
