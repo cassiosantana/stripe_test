@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :three_d_secure_subscriptions, only: [:new, :create]
+
   resources :donates, only: [] do
     collection do
       get :show
@@ -8,7 +10,8 @@ Rails.application.routes.draw do
 
   resource :purchases, only: :create
 
-  mount StripeEvent::Engine, at: '/stripe/webhook'
+  # mount StripeEvent::Engine, at: '/stripe/webhook'
+  post "/stripe/webhook", to: "stripe_webhooks#event"
 
   resources :products
 

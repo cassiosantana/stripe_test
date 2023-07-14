@@ -21,3 +21,9 @@
   <%= f.number_field :amount %>
   <%= f.submit "Donate" %>
 <% end %>
+
+<hr>
+
+<% if user_signed_in? %>
+  <p><%= link_to 'Subscribe to Premium for $50/month', new_three_d_secure_subscription_path, class: 'btn btn-primary' %></p>
+<% end %>
